@@ -1,11 +1,10 @@
 #include <iostream>
+#include <vector>
 
-using namespace std;
-
-void insertion_sort(int in_array[], int length) {
-    for (int i = 1; i < length; i++) {
+void insertion_sort(std::vector<int>& in_array) {
+    for (size_t i = 1; i < in_array.size(); i++) {
         int current_value = in_array[i];
-        int position = i;
+        size_t position = i; // size_t olarak değiştirildi
 
         while (position > 0 && in_array[position - 1] > current_value) {
             in_array[position] = in_array[position - 1];
@@ -17,19 +16,18 @@ void insertion_sort(int in_array[], int length) {
 }
 
 int main() {
-    int dizi[5];
+    std::vector<int> dizi(5);
 
-    cout << "5 adet sayı giriniz:" << endl;
-    for (int i = 0; i < 5; i++) {
-        cin >> dizi[i];
+    std::cout << "5 adet sayı giriniz:" << std::endl;
+    for (int& num : dizi) {
+        std::cin >> num;
     }
 
-    // Insertion Sort ile sıralama
-    insertion_sort(dizi, 5);
+    insertion_sort(dizi);
 
-    cout << "Sıralanmış Dizi:" << endl;
-    for (int i = 0; i < 5; i++) {
-        cout << dizi[i] << " ";
+    std::cout << "Sıralanmış Dizi:" << std::endl;
+    for (int num : dizi) {
+        std::cout << num << " ";
     }
 
     return 0;
